@@ -257,7 +257,7 @@
   \item \textbf{Primjer 2}
   \item[] Linija koja ne završava sa slovom A 
   \begin{itemize}
-    \item[] \shell{.*[\textasciicircum{}aA]}
+    \item[] \shell{.*[\textasciicircum{}aA]\$}
   \end{itemize}
   \item[] Cijeli broj
   \begin{itemize}
@@ -346,9 +346,9 @@
 \item[] Izlistajte linije iz datoteke \shell{file.txt} koje sadrže samo brojeve
 \begin{itemize}
 	\item Prvi način
-	\item[] \shell{\$ grep [0-9]* file.txt}
+	\item[] \shell{\$ grep [0-9]+ file.txt}
 	\item Drugi način
-	\item[] \shell{\$ grep [[:digit:]]* file.txt}
+	\item[] \shell{\$ grep [[:digit:]]+ file.txt}
 \end{itemize}
 \end{itemize}
 \end{frame}

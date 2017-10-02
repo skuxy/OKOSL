@@ -26,7 +26,7 @@
 
 \title{Osnove korištenja operacijskog sustava Linux}
 \subtitle{00. Organizacija vještine}
-\author[Dominik Barbarić]{Dominik Barbarić\\{\small Nositelj: dr. sc. Stjepan Groš}}
+\author[Leonard Volarić Horvat]{Leonard Volarić Horvat\\{\small Nositelj: dr. sc. Stjepan Groš}}
 \institute[FER]{Sveučilište u Zagrebu \\
 				Fakultet elektrotehnike i računarstva}
 				
@@ -47,9 +47,9 @@
 \begin{frame}[t]
 	\frametitle{Cilj vještine}
 	\begin{itemize}
-		\item Upoznati studente s radom u komandnolinijskom sučelju
-		\item Dati pregled mogućnosti Linuxa
-		\item Dobiti osjećaj za rješavanje problema koji nisu pokriveni vještinom
+		\item Demistificiranje rada u komandnolinijskom sučelju
+		\item Uvid u pregled mogućnosti Linuxa
+		\item Steći osjećaj za rješavanje problema koji nisu pokriveni vještinom
 		\item Definirati znanja potrebna za NKOSL
 	\end{itemize}
 \end{frame}
@@ -60,7 +60,7 @@
 		\item Nije potrebno predznanje
 		\item Vještina je izborna
 		\begin{itemize}
-			\item Vještine se upisuju u ISVU van strukture studija i \textbf{ECTS bodovi ne ulaze} u zbrojeve za dom, plaćanje ili prijelaz na iduću godinu
+			\item Vještine se upisuju u ISVU izvan strukture studija i \textbf{ECTS bodovi ne ulaze} u zbrojeve za studentski dom, plaćanje ili prijelaz na iduću godinu
 			\item Vještinu upisujete radi vlastitog interesa i želje za učenjem rada na Linuxu
 			\item Očekuje se angažiranost studenata, prijedlozi, komentari, kritike, \ldots
 		\end{itemize}
@@ -75,9 +75,9 @@
 		\item Skripte
 		\item Rad s datotekama i direktorijima
 		\item Pretraživanje, filtri, cjevovodi
+		\item Varijable i kontrola toka
 		\item Zamjenski znakovi i regularni izrazi
-		\item Procesi
-		\item Ljuske
+		\item Signali, procesi i ljuske
 		\item Korisnici i grupe
 		\item Vlasništvo i dozvole
 		\item \ldots
@@ -89,12 +89,13 @@
 \frametitle{Predavanja}
 \begin{itemize}
 	\item Svake subote osim vikendima prije ispitnih tjedana
-	\item 7 termina
-	\item A102 - 3 grupe
+	\item 8 termina
+	\item 4 grupe
+	\item Paralelna predavanja u dvoranama A111 i D346
+	\item Termini:
 	\begin{itemize}
 		\item 10-12 sati
 		\item 12-14 sati
-		\item 14-16 sati
 	\end{itemize}
 	\item Dva školska sata predavanja s vježbama i praktičnim radom
 	\item Predavanja i zadaci za vježbu se objavljuju na FERwebu
@@ -107,16 +108,16 @@
 \begin{itemize}
 	\item Bodovi:
 	\begin{itemize}
-		\item 7 domaćih zadaća x 5 bodova = 35 bodova
-		\item 3 laboratorijske vježbe x 10 bodova = 30 bodova
-		\item Prisustvo na predavanjima x 5 bodova = 35 bodova
+		\item 5 domaćih zadaća x 8 bodova = 40 bodova
+		\item 3 laboratorijske vježbe x 20 bodova = 60 bodova
+		\item Prisutnost na predavanjima x 0 bodova = 0 bodova
 	\end{itemize}
 	\item Uvjeti za prolaz vještine:
 	\begin{itemize}
-		\item Sve zadaće uspješno predane
-		\item Predani i odgovarani svi labosi
-		\item 20 bodova na prisustvu
-		\item Sve skupa \textbf{\textgreater 50} bodova
+		\item Ukupno minimalno 20 bodova na domaćim zadaćama
+		\item Minimalno 10 bodova na \textbf{svakoj} laboratorijskoj vježbi
+		\item Prisutnost na 50\% predavanja
+		\item Sve skupa \textbf{\textgreater 50} bodova (što proizlazi iz zadovoljavanja prethodnih uvjeta)
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -126,9 +127,9 @@
 \begin{itemize}
 	\item Zadaju se na FERwebu poslije svakog predavanja
 	\item Predaja do srijede u 23:59
-	\item Način predaje bit će naknadno objavljen
+	\item Način predaje: \textbf{Git!}
 	\item Zadaci su slični zadacima za vježbu obrađenim na predavanju
-	\item Za svaku zadaću dobiva se povratna informacija od ispravljača
+	\item Za svaku zadaću dobiva se povratna informacija od ispravljača - također na Git
 \end{itemize}
 \end{frame}
 
@@ -147,11 +148,7 @@
 \frametitle{Radna okolina}
 \begin{itemize}
 	\item Predavanja se sastoje od teorije, primjera i zadataka za vježbu
-	\item Studenti zadatke rješavaju samostalno koristeći
-	\begin{itemize}
-		\item vlastito računalo (poželjno)
-		\item računala dostupna na fakultetu
-	\end{itemize}
+	\item Studenti zadatke rješavaju samostalno ili u radu s kolegom (shodno tome, potreban je barem jedan laptop)
 	\item Studenti moraju doći s pripremljenom Linux distribucijom, preporučeno Debian, na vlastitom računalu ili s pripremljenim virtualnim strojem kojeg možete pokrenuti na fakultetskom računalu.
 	\item Možete koristiti i live distribucije
 \end{itemize}

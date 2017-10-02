@@ -57,17 +57,18 @@
 \begin{itemize}
 	\item Operacijski sustav ima nekoliko primarnih zadaća:
   \begin{itemize}
-    \item Pristup uređajima
+    \item Uspostavljanje korisničkog sučelja
     \begin{itemize}
-      \item Kontrolira svaki zahtjev za pristup uređajima
-      \item Određuje koji zahtjev ima prioritet
+      \item Omogućuje bezbolno izvođenje programa na bilo kojem sklopovlju
+      \item Olakšava rad na računalu 'skrivanjem' raznih implementacijskih detalja
     \end{itemize}
-    \item Upravljanje korisnicima
+    \item Efikasna raspodjela računalnih resursa
     \begin{itemize}
-      \item Razlikuje zahtjeve korisnika
+      \item Osigurava da se svaki program izvrši sigurno i neometano
     \end{itemize}
+    \item Osiguravanje višeprogramskog rada
 	\end{itemize}
-  \item Ovakav opis skriva puno detalja, ali definira dvije najbitnije uloge
+  \item Ovakav opis je štur, ali definira najbitnije uloge
         operacijskog sustava 
 \end{itemize}
 \end{frame}
@@ -120,6 +121,8 @@
     \begin{itemize}
       \item Linux u širem smislu je jezgra + aplikacije
     \end{itemize}
+    \item Posrednik je između sklopovlja i programa
+    \item Obavlja najvažnije operacije OS-a (memory management, etc..)
   \end{itemize}
   \item Sklopovska podrška izvršavanju OS-a
   \begin{itemize}
@@ -216,6 +219,11 @@
       \item 1.1, 1.3, 2.1, 2.3, 2.5 nestabilne verzije
     \end{itemize}
   \end{itemize}
+  \item Načini distribucije ažuriranja
+  \begin{itemize}
+    \item Rolling release model
+    \item Stable release model
+  \end{itemize} 
   \item \url{www.distrowatch.com}
 \end{itemize}
 \end{frame}
@@ -269,6 +277,11 @@
   \item Distribucije su konačni proizvodi, operacijski sustavi u 
         najširem smislu
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Distribucije (3)}
+\includegraphics[width=1.0\textwidth,height=0.8\textheight]{periodic-table.png}
 \end{frame}
 
 \section{Komunikacija s računalom}
@@ -731,19 +744,6 @@
   \shell{bash <ime skripte>} & pokretanje skripte \\ \hline
 
 \end{tabular}
-\end{frame}
-
-\begin{frame}[t]
-\frametitle{Upravljanje verzijama datoteke}
-\begin{itemize}
-  \item \texttt{git init}
-  \item \texttt{git add .}
-  \item \texttt{git commit -am 'initialized project'}
-  \item \texttt{git push origin master}
-
-  \item \texttt{log, reset, pull, fetch, merge, remote, checkout}
-  \item privatni i javni ključevi
-\end{itemize}
 \end{frame}
 
 \begin{frame}[t]

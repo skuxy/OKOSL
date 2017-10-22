@@ -1,0 +1,172 @@
+\documentclass{beamer}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{datetime}
+\usepackage{graphics}
+\usepackage{fancybox}
+\usepackage{color}
+\usepackage[normalem]{ulem}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usetheme{CambridgeUS}
+\usecolortheme{seagull}
+% Changing of bullet foreground color not possible if {itemize item}[ball]
+\DefineNamedColor{named}{Purple}{cmyk}{0.52,0.97,0,0.55}
+\setbeamertemplate{itemize item}[triangle]
+\setbeamercolor{title}{fg=Purple}
+\setbeamercolor{frametitle}{fg=Purple}
+\setbeamercolor{itemize item}{fg=Purple}
+\setbeamercolor{section number projected}{bg=Purple,fg=white}
+\setbeamercolor{subsection number projected}{bg=Purple}
+
+\renewcommand{\dateseparator}{.}
+\newcommand{\todayiso}{\twodigit\day \dateseparator \twodigit\month \dateseparator \the\year}
+
+\title{Osnove korištenja operacijskog sustava Linux}
+\subtitle{00. Organizacija vještine}
+\author[Leonard Volarić Horvat]{Leonard Volarić Horvat\\{\small Nositelj: dr. sc. Stjepan Groš}}
+\institute[FER]{Sveučilište u Zagrebu \\
+				Fakultet elektrotehnike i računarstva}
+				
+\date{\todayiso}
+
+\begin{document}
+    %\beamerdefaultoverlayspecification{<+->}
+{
+\setbeamertemplate{headline}[] % still there but empty
+\setbeamertemplate{footline}{}
+
+\begin{frame}
+\maketitle
+\end{frame}
+}
+
+\section{Cilj vještine}
+\begin{frame}[t]
+	\frametitle{Ciljevi vještine}
+	\begin{itemize}
+		\item Demistificiranje rada u komandnolinijskom sučelju
+		\item Uvid u pregled mogućnosti Linuxa
+		\item Stjecanje osjećaja za rješavanje problema koji nisu pokriveni vještinom
+		\item Definiranje znanja potrebnih za NKOSL
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Ciljevi vještine}
+	\begin{itemize}
+		\item Nije potrebno predznanje
+		\item Vještina je izborna
+		\begin{itemize}
+			\item Vještine se upisuju u ISVU izvan strukture studija i \textbf{ECTS bodovi ne ulaze} u zbrojeve za studentski dom, plaćanje ili prijelaz na iduću godinu
+			\item Vještinu upisujete radi vlastitog interesa i želje za učenjem rada na Linuxu
+			\item Očekuje se angažiranost studenata, prijedlozi, komentari, kritike, \ldots
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Sadržaj vještine}
+\begin{frame}[t]
+	\frametitle{Sadržaj vještine}
+	\begin{itemize}
+		\item Korištenje CLI
+		\item Skripte
+		\item Rad s datotekama i direktorijima
+		\item Pretraživanje, filtri, cjevovodi
+		\item Varijable i kontrola toka
+		\item Zamjenski znakovi i regularni izrazi
+		\item Signali, procesi i ljuske
+		\item Korisnici i grupe
+		\item Vlasništvo i dozvole
+		\item \ldots
+	\end{itemize}
+\end{frame}
+
+\section{Predavanja}
+\begin{frame}[t]
+\frametitle{Predavanja}
+\begin{itemize}
+	\item Svake subote osim vikendima prije ispitnih tjedana
+	\item 8 termina
+	\item 4 grupe
+	\item Paralelna predavanja u dvoranama A111 i D346
+	\item Termini:
+	\begin{itemize}
+		\item 10-12 sati
+		\item 12-14 sati
+	\end{itemize}
+	\item Dva školska sata predavanja s vježbama i praktičnim radom
+	\item Predavanja i zadaci za vježbu se objavljuju na FERwebu
+\end{itemize}
+\end{frame}
+
+\section{Bodovanje}
+\begin{frame}[t]
+\frametitle{Bodovanje}
+\begin{itemize}
+	\item Bodovi:
+	\begin{itemize}
+		\item 5 domaćih zadaća x 8 bodova = 40 bodova
+		\item 3 laboratorijske vježbe x 20 bodova = 60 bodova
+		\item Prisutnost na predavanjima x 0 bodova = 0 bodova
+	\end{itemize}
+	\item Uvjeti za prolaz vještine:
+	\begin{itemize}
+		\item Ukupno minimalno 20 bodova na domaćim zadaćama
+		\item Minimalno 10 bodova na \textbf{svakoj} laboratorijskoj vježbi
+		\item Prisutnost na 50\% predavanja
+		\item Sve skupa \textbf{\textgreater 50} bodova (što proizlazi iz zadovoljavanja prethodnih uvjeta)
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Domaće zadaće}
+\begin{itemize}
+	\item Zadaju se na FERwebu poslije svakog predavanja
+	\item Predaja do srijede u 23:59
+	\item Način predaje: \textbf{Git!}
+	\item Zadaci su slični zadacima za vježbu obrađenim na predavanju
+	\item Za svaku zadaću dobiva se povratna informacija od ispravljača - također na Git
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Laboratorijske vježbe}
+\begin{itemize}
+	\item Zadaju se nekoliko tjedana prije roka za predaju
+	\item Sadrže gradivo koje obuhvaća predavanja do roka predaje
+	\item U zadacima se traži razumijevanje i samostalno snalaženje
+	\item Labosi se predaju prema uputama i odgovaraju usmeno
+\end{itemize}
+\end{frame}
+
+\section{Radna okolina}
+\begin{frame}[t]
+\frametitle{Radna okolina}
+\begin{itemize}
+	\item Predavanja se sastoje od teorije, primjera i zadataka za vježbu
+	\item Studenti zadatke rješavaju samostalno ili u radu s kolegom (shodno tome, potreban je barem jedan laptop)
+	\item Studenti moraju doći s pripremljenom Linux distribucijom, preporučeno Debian, na vlastitom računalu ili s pripremljenim virtualnim strojem kojeg možete pokrenuti na fakultetskom računalu.
+	\item Možete koristiti i live distribucije
+\end{itemize}
+\end{frame}
+
+\section{Literatura}
+\begin{frame}[t]
+\frametitle{Literatura}
+\begin{itemize}
+	\item Jedna od pogodnosti Linuxa je jaka zajednica
+	\item Nakon svakog predavanja na prezentaciji će biti objavljena dodatna literatura
+	\item Koristite svu literaturu koja vam je na raspolaganju!
+	\begin{itemize}
+		\item Knjige, članci, druga predavanja, stripovi, \ldots :)
+		\item Internet (najbolji izvor)
+		\item wiki, irc, forumi, google 
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\end{document}

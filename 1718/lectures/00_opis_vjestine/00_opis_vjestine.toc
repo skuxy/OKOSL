@@ -1,0 +1,8 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Cilj vje\IeC {\v s}tine}{2}{0}{1}
+\beamer@sectionintoc {2}{Sadr\IeC {\v z}aj vje\IeC {\v s}tine}{4}{0}{2}
+\beamer@sectionintoc {3}{Predavanja}{5}{0}{3}
+\beamer@sectionintoc {4}{Bodovanje}{6}{0}{4}
+\beamer@sectionintoc {5}{Radna okolina}{9}{0}{5}
+\beamer@sectionintoc {6}{Literatura}{10}{0}{6}

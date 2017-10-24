@@ -1,0 +1,86 @@
+\documentclass{exam}
+\usepackage[croatian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\newcommand{\shell}[1]{\texttt{#1}}
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+
+\author{Osnove korištenja operacijskog sustava Linux}
+\date{October 2017}
+
+\begin{document}
+\title{Domaća zadaća - 01}
+\maketitle
+Rješenje zadatka je potrebno upisati u \shell{.sh} datoteku.
+
+
+\begin{questions}
+\question Ispišite sadržaj \shell{.bash\_logout} datoteke u vašem matičnom direktoriju.
+
+\question Ispišite sadržaj svog \shell{/home} direktorija sortiran po veličini uzlazno.
+
+\question Pokretanjem iz matičnog direktorija, unutar direktorija \shell{/tmp} napravite direktorij \shell{OKOSL tjedan} koji će sadržavati direktorije \shell{ponedjeljak}, \shell{utorak}, \shell{srijeda}, \shell{cetvrtak}, \shell{petak} i \shell{subota}, gdje će subota biti skriveni direktorij.
+\begin{parts}
+\part ispišite trenutni radni direktorij.
+\part bez mijenjanja direktorija u skrivenom direktoriju subota napravite prazne datoteke \shell{predavanja}, \shell{labosi}, \shell{zadaca1}, \shell{zadaca2} ... \shell{zadaca8}.
+\part ispišite sadržaj direktorija rekurzivno \shell{/tmp/OKOSL tjedan} kako biste dokazali da su se uistinu svi direktoriji i datoteke napravljeni kako smo i htjeli.
+\end{parts}
+
+
+\question U svom matičnom direktoriju stvorite simboličku poveznicu \shell{Varionica} na direktorij \shell{/var}. 
+\begin{itemize}
+    \item Odredite ukupno zauzeće (u GB) direktorija \shell{/var} koristeći poveznicu. (Probajte sa sudo i bez sudo, zašto je različito?)
+    \item Izbrišite simboličku poveznicu \shell{Varionica}.
+\end{itemize}
+
+\question Odredite koliko vam je preostalo slobodne memorije (u GB) na disku montiranom na \shell{/} direktorij.
+
+
+
+\question Sljedeći niz pitanja podrazumijeva rad na skupu podataka koje je potrebno dohvatiti s poveznice \\ \url{http://ankh.morpork.site/okosl/}. Na poveznici se nalazi direktorij \shell{okosl} koji sadrži 9 slučajno odabranih datoteka s materijali.fer2.net-a:
+\begin{parts}
+\part Podatke dohvatite naredbom \\
+\shell{wget -r --no-parent -nH -nc --cut-dirs=1} \\ \shell{http://ankh.morpork.site/okosl/ -P \textasciitilde/okosl}\footnote{Naredba bi trebala raditi u tom obliku, ali ipak proučite man stranice naredbe \shell{wget}} \\ 
+
+Naredba će napraviti novi direktorij okosl u vašem home direktoriju i tamo spremiti sadržaj okosla. (\textit{Napomena: direktorij sa svim podacima je nešto manji od 9 MB})
+\part Ispišite kojeg je tipa svaki od podataka u direktoriju. (\textit{HINT: naredba file})
+\part Kopirajte cijeli direktorij sa svim njegovim datotekama u \shell{/tmp/ponedjeljak}.
+\part Izbrišite direktorij koji je napravila naredba \shell{wget}.
+\end{parts}
+
+Za šesti zadatak možete koristiti sljedeći isječak skripte koji će vam pomoći kako iterirati kroz podatke
+
+\newpage
+
+\begin{lstlisting}[language=bash,caption={Iteracija kroz podatke}]
+#!/bin/bash
+...
+# iteriraj kroz svaki file u direktoriju ~/okosl/
+for file in ~/okosl/*;do
+    echo -n "trenutno gledam "
+    # na ovaj nacin se naredbama pridruzuje varijabla
+    echo $file
+done
+...
+\end{lstlisting}
+
+\question Ispišite sadržaj \shell{/var/log/syslog} datoteke \textbf{uz stalno praćenje} novih promjena u datoteci. Naredba smije prekinuti izvršavanje skripte.
+
+\end{questions}
+\par
+\underline{\textbf{Za one koji žele znati više:}}
+\begin{itemize}
+\item Stvorite direktorij naziva !!, a zatim direktorij naziva -, te se pokušajte pozicionirati u oba direktorija korištenjem naredbe cd. Riječ je o znakovima posebnih značenja u jeziku Bash, pa je potrebno malo razmisliti o načinu adresiranja direktorija.
+\item Napravite alias (\shell{.bash\_aliases} datoteka) \shell{update} koji odgovara naredbi za ažuriranje vašeg operacijskog sustava.
+\item Stvorite par privatnog i javnog RSA ključa, i, koristeći njih, osposobite SSH inačicu git repozitorija.
+\item Napravite novu git granu \textbf{dz01-additions} i u nju postavite datoteke s rješenjima prethodnih zadataka. 
+\end{itemize}
+
+
+\end{document}

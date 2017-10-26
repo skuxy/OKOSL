@@ -31,8 +31,8 @@
 \newcommand{\shell}[1]{\texttt{#1}}
 
 \title{Osnove korištenja operacijskog sustava Linux}
-\subtitle{07. Pretraživanja, filtri i cjevovodi}
-\author[Nino Nikola Stanušić i Goran Cetušić]{Nino Nikola Stanušić i Goran Cetušić\\{\small Nositelj: dr. sc. Stjepan Groš}}
+\subtitle{03. Pretraživanja, filtri i cjevovodi}
+\author[Nino Nikola Stanušić, Goran Cetušić, Borna Skukan, Tomislav Skokovic]{Nino Nikola Stanušić, Goran Cetušić, Borna Skukan, Tomislav Skokovic\\{\small Nositelj: dr. sc. Stjepan Groš}}
 \institute[FER]{Sveučilište u Zagrebu \\
 				Fakultet elektrotehnike i računarstva}
 				
@@ -170,7 +170,6 @@
 	\item Riješenje
 	\begin{itemize}
 	
-	\item[] \shell{\$ ls -l /tmp/}
 	\item[] \shell{\$ ls -l /bin/ >> /tmp/output}
 	\item[] \shell{\$ ls -l /sbin/ >> /tmp/output}
 	\item[] \shell{\$ ls -l /usr/bin/ >> /tmp/output}
@@ -207,6 +206,8 @@
     \item[] \shell{\$ cat > /tmp/passwd < /etc/passwd}
   \end{itemize}
   \item Nije bitan redoslijed operatora preusmjeravanja
+  \item Ali ipak obratiti pozornost na redoslijed, radi citljivosti
+  \item ``Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live. Code for readability.''
 \end{itemize}
 \end{frame}
 
@@ -458,11 +459,13 @@ EOF
     \item[] \shell{\$ true \&\& echo 1}
   \end{itemize}
   \item drugi niz naredbi izvršava se samo ako je naredba (naredbe) ispred
-        operatora znakova \&\& vratila izlazni status "0"
+        operatora znakova \shell{\&\&} vratila izlazni status "0"
+  \item kada se izvrsava naredba poslije operatora \shell{||}  ?
   \item Primjeri
   \begin{itemize}
     \item[] \shell{\$ false \&\& echo 1}
     \item[] \shell{\$ false || echo 1}
+    
   \end{itemize}
 \end{itemize}
 \end{frame}

@@ -1,0 +1,65 @@
+\documentclass{exam}
+\usepackage[croatian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\newcommand{\shell}[1]{\texttt{#1}}
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+
+\author{Osnove korištenja operacijskog sustava Linux}
+\date{October 2017}
+
+\begin{document}
+\title{Domaća zadaća - 02}
+\maketitle
+Rješenje zadatka je potrebno upisati u \shell{.sh} datoteku.
+
+
+\subsection*{Zadatak 1.}
+  \begin{itemize}
+    \item Stvorite datoteku koja u prvom redu sadrži vaš JMBAG koristeći naredbu \texttt{echo} i preusmjeravanje. Datoteku nazovite \texttt{personal\_info.dat}
+    \item Pomoću naredbe \texttt{cat} i here dokumenta dodajte vaše ime i prezime u redak ispod JMBAG-a.
+    \item Pomoću naredbe \shell{tee} dodajte "okosl" u redak ispod imena i prezimena.  
+\end{itemize}
+
+  \subsection*{Zadatak 2.}
+  \begin{itemize}
+    \item[] Za sve točke ovog zadatka iskoristite datoteku \texttt{korisnici.dat}. Imena u datoteci nisu case-sensitive. Svaki redak datoteke ima format
+    \item[] \texttt{<broj retka>:<ime>:<id korisnika>}
+    \item Sortirajte datoteku po broju retka i rezultat zapišite u \texttt{korisnici.sortirano.dat}
+    \item Ispišite sva jedinstvena imena (koja se ne ponavljaju) u datoteku\\\texttt{jedistveni\_korisnici.dat}
+    \item Imena koja se ponavljaju više puta zapišite u datoteku\\\texttt{nejedinstveni\_korisnici.dat}
+  \end{itemize}
+  \subsection*{Zadatak 3.}
+  \begin{itemize}
+  	\item Prebrojite koliko riječi iz datoteke \texttt{/usr/share/dict/words} sadrže tekst \shell{ping}.
+  	\item U datoteku \texttt{yous.dat} izdvojite sve riječi iz datoteke \texttt{/usr/share/dict/words} koje sadrže tekst \shell{you}.
+  	\item Prebrojite koliko je takvih riječi.
+  	\item Udvostručite sadržaj datoteke \texttt{yous.dat}.
+  \end{itemize}
+  \subsection*{Zadatak 4.}
+  Locirajte datoteku \texttt{jedinstveni\_korisnici.dat} stvorenu u zadatku 2 koristeći, redom, naredbe
+  \begin{itemize}
+    \item \texttt{find}
+    \item \texttt{locate}
+\end{itemize}
+
+    \subsection*{Zadatak 5.}
+    \begin{itemize}
+        \item Koristeći operator $\rvert$ odnosno \textit{pipe} na stdout ispišite sve datoteke iz svog home direktorija kojima je zadnje vrijeme promjene (eng. \textit{modification time}) bilo u 10. mjesecu. (\textit{HINT: grep na "Oct"}).
+        \item Output dobiven u prošloj naredbi sortirajte s obzirom na sedmi stupac u ispisu prema numeričkoj vrijednosti brojeva.
+        \item Finalni output naredbe upišite u datoteku \shell{/tmp/sortiran\_home.txt}.
+    \end{itemize}
+    
+\underline{\textbf{Za one koji žele znati više:}}
+\begin{itemize}
+    \item Dokažite da \shell{/tmp/sortiran\_home.txt} postoji koristeći uvjetno izvođenje s naredbom \shell{test -f}.
+
+\end{itemize}
+\end{document}

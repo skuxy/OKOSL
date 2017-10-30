@@ -1,0 +1,661 @@
+\documentclass{exam}
+\usepackage[croatian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\newcommand{\shell}[1]{\texttt{#1}}
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+    commentstyle=\color{red},
+      keywordstyle=\color{blue}
+      }
+
+      \title{Prva laboratorijska vježba}
+      \author{Osnove korištenja operacijskog sustava Linux}
+      \date{October 2017}
+
+      \begin{document}
+      \maketitle
+      Za svaki zadatak potrebno je napisati po jednu bash skriptu.
+      \subsection*{Zadatak 1.}
+        \begin{itemize}
+                \item[a)] Napišite bash skriptu koja čita tekst sa standardnog
+                ulaza i ispisuje ga na standardni izlaz. Nad pročitanim podacima
+                ne treba raditi izmjene.
+                        \item[b)] Koristeći mogućnosti datoteka u Linuxu
+                        ostvarite tekstualnu komunikaciju između dva korisnika
+                        na istom računalu. Pretpostavite da svaki korisnik može
+                        imati dva terminala stalno otvorena. Poruke poslane od
+                        jednog korisnika moraju odmah biti prikazane drugom
+                        korisniku.\\
+                                U implementaciji smijete koristiti najviše dvije
+                                datoteke. Rješenje mora biti jedna ili dvije
+                                bash skripte koje pripremaju i pokreću
+                                komunikaciju. U komentarima skripata objasnite
+                                postupak slanja i primanja poruka.
+                                \end{itemize}
+
+
+                                \subsection*{Zadatak 2.}
+                                    Zanima nas koliko će se puta u nekoj godini
+                                    dogoditi petak 13. Srećom, nalazimo se u
+                                    linux okruženju gdje imamo naredbu
+                                    \shell{ncal}, te poznajemo naredbe za
+                                    pretraživanje teksta koje će nam olakšati
+                                    ovaj zadatak. 
+                                        \begin{itemize}
+                                                \item[a)] Prije svega pogledajte
+                                                man stranicu naredbe ncal, mi
+                                                ćemo je koristiti u
+                                                najjednostavnijem mogućem
+                                                obliku: \shell{ncal <godina>}.
+                                                        \item[b)] Koristeći
+                                                        mogućnosti pretraživanja
+                                                        teksta prije svega
+                                                        želimo izbaciti sve
+                                                        linije koje ne počinju s
+                                                        rijeci \shell{Fr}.
+                                                                \item[c)]
+                                                                Nadalje, želimo
+                                                                prebrojati
+                                                                koliko od tih
+                                                                linija uopće
+                                                                sadrži broj 13 u
+                                                                sebi. U ovom
+                                                                trenutku naša
+                                                                skripta uistinu
+                                                                broji koliko
+                                                                puta se u godini
+                                                                dogodio petak
+                                                                13.
+                                                                        \item[d)]
+                                                                        Sljedeće
+                                                                        što
+                                                                        želimo
+                                                                        dodati
+                                                                        je da
+                                                                        skripta
+                                                                        od
+                                                                        korisnika
+                                                                        prima
+                                                                        godinu
+                                                                        za koju
+                                                                        provjerava
+                                                                        koliko
+                                                                        puta će
+                                                                        se
+                                                                        dogoditi
+                                                                        petak
+                                                                        13. i
+                                                                        zatim
+                                                                        ispisuje
+                                                                        poruku
+                                                                        na
+                                                                        stdout.
+                                                                        U
+                                                                        predlošku
+                                                                        je
+                                                                        primjer
+                                                                        koji
+                                                                        možete
+                                                                        koristiti,
+                                                                        a on
+                                                                        koristi
+                                                                        naredbu
+                                                                        read za
+                                                                        čitanje
+                                                                        inputa
+                                                                        korisnika.
+                                                                        Dok
+                                                                        korisnik
+                                                                        ne unese
+                                                                        godinu,
+                                                                        skripta
+                                                                        se neće
+                                                                        izvršavati.
+                                                                        \begin{lstlisting}[language=bash,caption={Citanje
+                                                                        inputa}]
+                                                                        #!/bin/bash
+                                                                        echo -n
+                                                                        "Upisi
+                                                                        godinu
+                                                                        za koju
+                                                                        te
+                                                                        zanima
+                                                                        koliko
+                                                                        puta se
+                                                                        dogodio
+                                                                        petak
+                                                                        13.: "
+                                                                        read
+                                                                        godina;
+
+                                                                        petkovi=$(ncal
+                                                                        $godina
+                                                                        |
+                                                                        <ostatak
+                                                                        super
+                                                                        kul
+                                                                        naredbe>)
+                                                                        echo "U
+                                                                        godini
+                                                                        $godina,
+                                                                        petak
+                                                                        13. se
+                                                                        dogodio
+                                                                        $petkovi
+                                                                        puta."
+                                                                        \end{lstlisting}
+
+                                                                                \item[e)]
+                                                                                Sada
+                                                                                kad
+                                                                                imamo
+                                                                                i
+                                                                                lijep
+                                                                                ispis
+                                                                                zadatka,
+                                                                                možda
+                                                                                bi
+                                                                                korisnika
+                                                                                zanimalo
+                                                                                koliko
+                                                                                puta
+                                                                                ce
+                                                                                se
+                                                                                petak
+                                                                                13.
+                                                                                dogoditi
+                                                                                u
+                                                                                narednih
+                                                                                x
+                                                                                godina.
+                                                                                Koristeći
+                                                                                istu
+                                                                                filozofiju,
+                                                                                nakon
+                                                                                prvog
+                                                                                ispisa
+                                                                                zatražite
+                                                                                sljedeći
+                                                                                upis
+                                                                                "do
+                                                                                koje
+                                                                                godine
+                                                                                te
+                                                                                zanima
+                                                                                koliko
+                                                                                puta
+                                                                                će
+                                                                                se
+                                                                                dogoditi
+                                                                                petak
+                                                                                13.:
+                                                                                "
+                                                                                gdje
+                                                                                će
+                                                                                korisnik
+                                                                                unijeti
+                                                                                recimo
+                                                                                godinu
+                                                                                "2100",
+                                                                                a
+                                                                                program
+                                                                                mu
+                                                                                ispisati:
+                                                                                        
+                                                                                                \begin{lstlisting}[caption={Ispis}]
+                                                                                                okosl@poseidon:~$
+                                                                                                bash
+                                                                                                labos.sh 
+                                                                                                Upisi
+                                                                                                godinu
+                                                                                                za
+                                                                                                koju
+                                                                                                te
+                                                                                                zanima
+                                                                                                koliko
+                                                                                                puta
+                                                                                                se
+                                                                                                dogodio
+                                                                                                petak
+                                                                                                13.:
+                                                                                                2017
+                                                                                                U
+                                                                                                godini
+                                                                                                2017,
+                                                                                                petak
+                                                                                                13.
+                                                                                                se
+                                                                                                dogodio
+                                                                                                2
+                                                                                                puta.
+
+                                                                                                Upisi
+                                                                                                godinu
+                                                                                                za
+                                                                                                do
+                                                                                                koje
+                                                                                                te
+                                                                                                zanima
+                                                                                                koliko
+                                                                                                puta
+                                                                                                ce
+                                                                                                se
+                                                                                                dogoditi
+                                                                                                petak
+                                                                                                13.:
+                                                                                                2100
+                                                                                                U
+                                                                                                godini
+                                                                                                2017,
+                                                                                                petak
+                                                                                                13.
+                                                                                                se
+                                                                                                dogodio
+                                                                                                2
+                                                                                                puta.
+                                                                                                U
+                                                                                                godini
+                                                                                                2018,
+                                                                                                petak
+                                                                                                13.
+                                                                                                se
+                                                                                                dogodio
+                                                                                                2
+                                                                                                puta.
+                                                                                                U
+                                                                                                godini
+                                                                                                2019,
+                                                                                                petak
+                                                                                                13.
+                                                                                                se
+                                                                                                dogodio
+                                                                                                2
+                                                                                                puta.
+                                                                                                U
+                                                                                                godini
+                                                                                                2020,
+                                                                                                petak
+                                                                                                13.
+                                                                                                se
+                                                                                                dogodio
+                                                                                                2
+                                                                                                puta.
+                                                                                                ....
+                                                                                                U
+                                                                                                godini
+                                                                                                2100,
+                                                                                                petak
+                                                                                                13.
+                                                                                                se
+                                                                                                dogodio
+                                                                                                1
+                                                                                                puta.
+                                                                                                \end{lstlisting}
+
+                                                                                                        Potreban
+                                                                                                        nam
+                                                                                                        je
+                                                                                                        još
+                                                                                                        jedan
+                                                                                                        blok
+                                                                                                        koji
+                                                                                                        će
+                                                                                                        sada
+                                                                                                        iterirati
+                                                                                                        kroz
+                                                                                                        zadani
+                                                                                                        opseg
+                                                                                                        godina
+                                                                                                                
+                                                                                                                        \begin{lstlisting}[language=bash,caption={Iteracija
+                                                                                                                        po
+                                                                                                                        opsegu}]
+                                                                                                                        #!/bin/bash
+                                                                                                                        ... 
+                                                                                                                        echo
+                                                                                                                        "U
+                                                                                                                        godini
+                                                                                                                        $godina,
+                                                                                                                        petak
+                                                                                                                        13.
+                                                                                                                        se
+                                                                                                                        dogodio
+                                                                                                                        $petkovi
+                                                                                                                        puta."
+
+                                                                                                                        echo
+                                                                                                                        -n
+                                                                                                                        "Upisi
+                                                                                                                        godinu
+                                                                                                                        za
+                                                                                                                        do
+                                                                                                                        koje
+                                                                                                                        te
+                                                                                                                        zanima
+                                                                                                                        koliko
+                                                                                                                        puta
+                                                                                                                        ce
+                                                                                                                        se
+                                                                                                                        dogoditi
+                                                                                                                        petak
+                                                                                                                        13.:
+                                                                                                                        "
+                                                                                                                        read
+                                                                                                                        opseg
+
+                                                                                                                        for
+                                                                                                                        godina
+                                                                                                                        in
+                                                                                                                        $(seq
+                                                                                                                        2017
+                                                                                                                        $opseg)
+                                                                                                                        do
+                                                                                                                            petkovi=$(ncal
+                                                                                                                            $godina
+                                                                                                                            |
+                                                                                                                            <ostatak
+                                                                                                                            super
+                                                                                                                            kul
+                                                                                                                            naredbe>)
+                                                                                                                                echo
+                                                                                                                                "U
+                                                                                                                                godini
+                                                                                                                                $godina
+                                                                                                                                ,
+                                                                                                                                petak
+                                                                                                                                13.
+                                                                                                                                se
+                                                                                                                                dogodio
+                                                                                                                                $petkovi
+                                                                                                                                puta."
+                                                                                                                                done
+                                                                                                                                \end{lstlisting}
+                                                                                                                                \end{itemize}
+
+                                                                                                                                \subsection*{Zadatak
+                                                                                                                                3.}
+                                                                                                                                Mali
+                                                                                                                                Ivica
+                                                                                                                                prije
+                                                                                                                                pola
+                                                                                                                                godine
+                                                                                                                                naišao
+                                                                                                                                je
+                                                                                                                                na
+                                                                                                                                skladbu
+                                                                                                                                o
+                                                                                                                                Linuxu
+                                                                                                                                koja
+                                                                                                                                mu
+                                                                                                                                se
+                                                                                                                                jako
+                                                                                                                                svidjela.
+                                                                                                                                Iako
+                                                                                                                                je
+                                                                                                                                siguran
+                                                                                                                                da
+                                                                                                                                je
+                                                                                                                                skladnu
+                                                                                                                                preuzeo
+                                                                                                                                (na
+                                                                                                                                najlegalniji
+                                                                                                                                mogući
+                                                                                                                                način)
+                                                                                                                                ne
+                                                                                                                                sjeća
+                                                                                                                                se
+                                                                                                                                gdje
+                                                                                                                                ju
+                                                                                                                                je
+                                                                                                                                spremio.
+                                                                                                                                Stoga
+                                                                                                                                se
+                                                                                                                                odlučio
+                                                                                                                                javiti
+                                                                                                                                prijatelju,
+                                                                                                                                inače
+                                                                                                                                entuzijastičnom
+                                                                                                                                linuksašu,
+                                                                                                                                koji
+                                                                                                                                će
+                                                                                                                                mu
+                                                                                                                                napisati
+                                                                                                                                skriptu
+                                                                                                                                koja
+                                                                                                                                će
+                                                                                                                                riješiti
+                                                                                                                                sve
+                                                                                                                                njegove
+                                                                                                                                probleme.
+                                                                                                                                Odlučio
+                                                                                                                                je
+                                                                                                                                da
+                                                                                                                                će
+                                                                                                                                skripti
+                                                                                                                                na
+                                                                                                                                ulazu
+                                                                                                                                poslati
+                                                                                                                                riječ
+                                                                                                                                za
+                                                                                                                                koju
+                                                                                                                                je
+                                                                                                                                siguran
+                                                                                                                                za
+                                                                                                                                se
+                                                                                                                                nalazi
+                                                                                                                                u
+                                                                                                                                nazivu
+                                                                                                                                pjesme.
+                                                                                                                                Nakon
+                                                                                                                                izlistavanja
+                                                                                                                                svih
+                                                                                                                                .mp3
+                                                                                                                                datoteka
+                                                                                                                                s
+                                                                                                                                tom
+                                                                                                                                riječi
+                                                                                                                                u
+                                                                                                                                imenu
+                                                                                                                                bit
+                                                                                                                                ce
+                                                                                                                                potrebno
+                                                                                                                                samo
+                                                                                                                                upisati
+                                                                                                                                index
+                                                                                                                                pjesme,
+                                                                                                                                poslušati
+                                                                                                                                je
+                                                                                                                                i
+                                                                                                                                uživati.
+                                                                                                                                \begin{itemize}
+                                                                                                                                    \item[a)]
+                                                                                                                                    Pomoću
+                                                                                                                                    naredbe
+                                                                                                                                         \shell{wget
+                                                                                                                                         -r
+                                                                                                                                         --no-parent
+                                                                                                                                         -nH
+                                                                                                                                         -nc
+                                                                                                                                         -R
+                                                                                                                                         "index.html*"
+                                                                                                                                         --cut-dirs=1
+                                                                                                                                         http://close.port0.org/lab1/
+                                                                                                                                         -P
+                                                                                                                                         ~/OKOSL/lab1}
+                                                                                                                                         preuzmite
+                                                                                                                                         datoteke
+                                                                                                                                         kako
+                                                                                                                                         biste
+                                                                                                                                         mogli
+                                                                                                                                         testirati
+                                                                                                                                         valjanost
+                                                                                                                                         skripte.
+                                                                                                                                            \item[a)]Proučite
+                                                                                                                                            naredbe
+                                                                                                                                            za
+                                                                                                                                            puštanje
+                                                                                                                                            mp3
+                                                                                                                                            zvučnih
+                                                                                                                                            datoteka.
+                                                                                                                                            Preporučamo
+                                                                                                                                            instalaciju
+                                                                                                                                            \shell{vlc},
+                                                                                                                                            te
+                                                                                                                                            korištenje
+                                                                                                                                            \shell{nvlc}
+                                                                                                                                            naredbe.
+                                                                                                                                                \item[b)]
+                                                                                                                                                Kroz
+                                                                                                                                                zadatak
+                                                                                                                                                2
+                                                                                                                                                ste
+                                                                                                                                                se
+                                                                                                                                                upoznali
+                                                                                                                                                s
+                                                                                                                                                načinima
+                                                                                                                                                čitanja
+                                                                                                                                                inputa.
+                                                                                                                                                Isti
+                                                                                                                                                princip
+                                                                                                                                                iskoristite
+                                                                                                                                                za
+                                                                                                                                                čitanje
+                                                                                                                                                inputa
+                                                                                                                                                u
+                                                                                                                                                ovom
+                                                                                                                                                zadatku.
+                                                                                                                                                Preporuča
+                                                                                                                                                se
+                                                                                                                                                komunikacija
+                                                                                                                                                s
+                                                                                                                                                korisnikom
+                                                                                                                                                pomoću
+                                                                                                                                                \shell{echo}
+                                                                                                                                                naredbe.
+                                                                                                                                                    \item[c)]
+                                                                                                                                                    Nakon
+                                                                                                                                                    zadovoljavajućeg
+                                                                                                                                                    izgleda
+                                                                                                                                                    inicijalne
+                                                                                                                                                    komunikacije
+                                                                                                                                                    pomoću
+                                                                                                                                                    \shell{find}
+                                                                                                                                                    naredbe
+                                                                                                                                                    pronađite
+                                                                                                                                                    sve
+                                                                                                                                                    mp3
+                                                                                                                                                    datoteke
+                                                                                                                                                    rekurzivno
+                                                                                                                                                    iz
+                                                                                                                                                    vašeg
+                                                                                                                                                    matičnog
+                                                                                                                                                    direktorija.
+                                                                                                                                                    Izlaz
+                                                                                                                                                    preusmjerite
+                                                                                                                                                    u
+                                                                                                                                                    tekstualnu
+                                                                                                                                                    datoteku
+                                                                                                                                                    u
+                                                                                                                                                    \shell{/tmp/lab1.dat}.
+                                                                                                                                                        \item[d)]Čitajte
+                                                                                                                                                        tu
+                                                                                                                                                        datoteku
+                                                                                                                                                        kroz
+                                                                                                                                                        \shell{while}
+                                                                                                                                                        petlju
+                                                                                                                                                        na
+                                                                                                                                                        način:
+                                                                                                                                                            \begin{lstlisting}[language=bash,caption={Iteracija
+                                                                                                                                                            kroz
+                                                                                                                                                            redove
+                                                                                                                                                            datoteke}]
+                                                                                                                                                                #!/bin/bash
+                                                                                                                                                                    ... 
+                                                                                                                                                                        cat
+                                                                                                                                                                        /tmp/lab1.dat
+                                                                                                                                                                        |
+                                                                                                                                                                        while
+                                                                                                                                                                        read
+                                                                                                                                                                        line
+                                                                                                                                                                            do
+                                                                                                                                                                                ...
+                                                                                                                                                                                    done
+                                                                                                                                                                                        \end{lstlisting}
+                                                                                                                                                                                             
+                                                                                                                                                                                                 U
+                                                                                                                                                                                                 svakom
+                                                                                                                                                                                                 retku
+                                                                                                                                                                                                 ispišite
+                                                                                                                                                                                                 broj
+                                                                                                                                                                                                 datoteke
+                                                                                                                                                                                                 ,
+                                                                                                                                                                                                 te
+                                                                                                                                                                                                 njeno
+                                                                                                                                                                                                 ime.
+                                                                                                                                                                                                 Možete
+                                                                                                                                                                                                 istražiti
+                                                                                                                                                                                                 i
+                                                                                                                                                                                                 kako
+                                                                                                                                                                                                 promjeniti
+                                                                                                                                                                                                 boje
+                                                                                                                                                                                                 svakog
+                                                                                                                                                                                                 ispisa,
+                                                                                                                                                                                                 pa
+                                                                                                                                                                                                 pokušati
+                                                                                                                                                                                                 to
+                                                                                                                                                                                                 primjeniti.
+                                                                                                                                                                                                    \item[e)]
+                                                                                                                                                                                                    Ponovno
+                                                                                                                                                                                                    komunicirajte
+                                                                                                                                                                                                    s
+                                                                                                                                                                                                    korisnikom
+                                                                                                                                                                                                    te
+                                                                                                                                                                                                    ga
+                                                                                                                                                                                                    tražite
+                                                                                                                                                                                                    da
+                                                                                                                                                                                                    ispiše
+                                                                                                                                                                                                    valjan
+                                                                                                                                                                                                    index
+                                                                                                                                                                                                    mp3
+                                                                                                                                                                                                    datoteke.
+                                                                                                                                                                                                    Skripta
+                                                                                                                                                                                                    neće
+                                                                                                                                                                                                    nastaviti
+                                                                                                                                                                                                    izvršavanje
+                                                                                                                                                                                                    dok
+                                                                                                                                                                                                    se
+                                                                                                                                                                                                    ne
+                                                                                                                                                                                                    unese
+                                                                                                                                                                                                    valjan
+                                                                                                                                                                                                    index
+                                                                                                                                                                                                    mp3
+                                                                                                                                                                                                    datoteke.
+                                                                                                                                                                                                        \item[f)]
+                                                                                                                                                                                                        Ispišite
+                                                                                                                                                                                                        punu
+                                                                                                                                                                                                        putanju
+                                                                                                                                                                                                        mp3
+                                                                                                                                                                                                        datoteke
+                                                                                                                                                                                                        pod
+                                                                                                                                                                                                        tim
+                                                                                                                                                                                                        indexom,
+                                                                                                                                                                                                        te
+                                                                                                                                                                                                        je
+                                                                                                                                                                                                        pokrenite
+                                                                                                                                                                                                        pomoću
+                                                                                                                                                                                                        \shell{nvlc}
+                                                                                                                                                                                                        (ili
+                                                                                                                                                                                                        neke
+                                                                                                                                                                                                        druge
+                                                                                                                                                                                                        naredbe
+                                                                                                                                                                                                        za
+                                                                                                                                                                                                        pokretanje
+                                                                                                                                                                                                        mp3
+                                                                                                                                                                                                        datoteke).
+                                                                                                                                                                                                        \end{itemize}
+
+                                                                                                                                                                                                        \end{document}
+

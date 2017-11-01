@@ -1,0 +1,250 @@
+	% sredit sadrzaj - ovo ne lici ni na sto
+% pogreske - slajd preusmjeravanje u datoteku - ide u /tmp/test
+% nezgodno ispisuje \ u \shell{}, mozda verbatim
+
+\documentclass{beamer}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{datetime}
+\usepackage{graphics}
+\usepackage{fancybox}
+\usepackage{color}
+\usepackage[normalem]{ulem}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{shapes,arrows,positioning}
+\usetheme{CambridgeUS}
+\usecolortheme{seagull}
+% Changing of bullet foreground color not possible if {itemize item}[ball]
+\DefineNamedColor{named}{Purple}{cmyk}{0.52,0.97,0,0.55}
+\setbeamertemplate{itemize item}[triangle]
+\setbeamercolor{title}{fg=Purple}
+\setbeamercolor{frametitle}{fg=Purple}
+\setbeamercolor{itemize item}{fg=Purple}
+\setbeamercolor{section number projected}{bg=Purple,fg=white}
+\setbeamercolor{subsection number projected}{bg=Purple}
+
+\renewcommand{\dateseparator}{.}
+\newcommand{\todayiso}{\twodigit\day \dateseparator \twodigit\month \dateseparator \the\year}
+\newcommand{\shell}[1]{\texttt{#1}}
+\lstset{basicstyle=\ttfamily,
+	showstringspaces=false,
+	commentstyle=\color{red},
+	keywordstyle=\color{blue}
+}
+
+\title{Osnove korištenja operacijskog sustava Linux}
+\subtitle{05. Varijable i kontrola toka}
+\author[Mateo Stjepanović]{Mateo Stjepanović\\{\small Nositelj: dr. sc. Stjepan Groš}}
+\institute[FER]{Sveučilište u Zagrebu \\
+				Fakultet elektrotehnike i računarstva}
+				
+\date{\todayiso}
+
+\begin{document}
+    %\beamerdefaultoverlayspecification{<+->}
+{
+\setbeamertemplate{headline}[] % still there but empty
+\setbeamertemplate{footline}{}
+
+\begin{frame}
+\maketitle
+\end{frame}
+}
+
+\begin{frame}
+\frametitle{Sadržaj}
+\tableofcontents
+\end{frame}
+
+\section{Varijable}
+\begin{frame}[t]
+\frametitle{Varijable}
+\begin{itemize}
+  \item Varijable se mogu koristiti kako u bilo kojem drugom jeziku.
+  \item Sličnost s programskim jezikom Python.
+  	\begin{itemize}
+  		\item Nije potrebno deklarirati varijablu
+  		\item Moguće u nju ubaciti većinu tipova
+  	\end{itemize}
+  \item Dvije vrste varijabli
+  	\begin{itemize}
+  		\item Globalne varijable (Vidljivo iz svih shell-ova)
+  		\item Lokalne varijable (Vidljive samo u lokalnom shell-u)
+  	\end{itemize}
+  
+  \item Mogućnosti rada s varijablama
+  	\begin{itemize}
+		\item Spremanje vrijednosti u varijablu
+		\item Čitanje vrijednosti iz varijable
+  	\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[t]
+\frametitle{Primjer postavljanja i čitanja varijabli}
+\begin{itemize}
+	\item varijabla=vrijednost
+		 \begin{itemize}
+		 	\item hello="Hello World"
+		 	\item num=2
+		 \end{itemize}
+	 \item varijabla=\$(\shell{naredba}) - preusmjeravanje izlaza naredbe u varijablu
+	 \item \shell{export} varijabla - pretvaranje varijable u globalnu
+	 \item \shell{echo} \$varijabla
+	 	\begin{itemize}
+	 		\item \shell{echo}  \$hello
+	 		\item \shell{echo}  \$num
+	 	\end{itemize}
+ 	\item lokalna varijabla unutar skripte - \shell{local}
+ 	
+\end{itemize}
+
+\end{frame}
+\begin{lstlisting}[language=bash,caption={Primjer uporabe lokalne varijable}]
+#!/bin/bash
+HELLO=Hello 
+function hello {
+	local HELLO=World
+	echo $HELLO
+}
+echo $HELLO
+hello
+echo $HELLO
+\end{lstlisting}
+\section{Testovi}
+\begin{frame}
+\frametitle{Testovi}
+\begin{itemize}
+	\item Prije ulaska u kontrolu toka potrebno je navesti testove
+	\item Testovi su označeni s \shell{[ ]}
+	\item Vraćaju 0 ili 1 ovisno o tome zadovoljava li test zadani uvjet
+	\begin{itemize}
+		\item \shell{[ 1 -eq 1 ]}
+	\end{itemize}
+	\item NB: potreban razmak između zagrada i uvijeta
+	\item \shell{echo \$?} ispisuje rezultat testa
+\end{itemize}
+\end{frame}
+
+\section{Operatori usporedbe}
+\begin{frame}
+\frametitle{Operatori usporedbe}
+\begin{itemize}
+	\item Operatori određuju uvjete kontrole toka
+	\item Vrste operatora:
+	\begin{itemize}
+		\item Operatori integer-a
+		\item Operatori string-a
+		\item Operatori datoteka		
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Operatori integer-a}
+\begin{itemize}
+	\item -lt (manje od)
+	\item -gt (veće od)
+	\item -le (manje od ili jednako)
+	\item -ge (veće od ili jednako)
+	\item -eq (jednako)
+	\item -ne (različito)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Operatori string-a}
+\begin{itemize}
+	\item \textless (manje od)
+	\item \textgreater (veće od)
+	\item = (jednako)
+	\item != (različito)
+	\item -n (vraća 0 ako niz ima duljinu)
+	\item -z (vraća 0 ako je niz prazan)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Operatori datoteka}
+\begin{itemize}
+	\item -e (datoteka postoji)
+	\item -s (datoteka ima veličinu veću od 0)
+	\item -d (datoteka je direktorij)
+\end{itemize}
+\end{frame}
+
+\section{Kontrola toka}
+\begin{frame}
+\frametitle{Kontrola toka}
+\begin{itemize}
+	\item Sada se možemo upustiti u kontrolu toka
+	\item Tri naredbe za kontrolu toka:
+	\begin{itemize}
+		\item \shell{if}
+		\item \shell{else}
+		\item \shell{elif}
+	\end{itemize}
+	\item Znajući gore navedene operatore i testove idemo prikazati primjere kontrole toka
+\end{itemize}
+\end{frame}
+\begin{itemize}
+	\item IF - struktura i primjer
+\end{itemize}
+	\begin{lstlisting}[language=bash]
+		#! /bin/bash
+		HELLO="hello"
+		if [ $HELLO="hello" ]
+		then
+			echo "$HELLO world"
+		fi
+	\end{lstlisting}
+\begin{itemize}
+	\item ELSE - struktura i primjer
+\end{itemize}
+	
+	\begin{lstlisting}[language=bash]
+		#! /bin/bash
+		if [ -e datoteka.txt ]
+		then
+			cat datoteka.txt
+		else
+			echo "Ne postoji datoteka"
+		fi
+	\end{lstlisting}
+\begin{itemize}
+	\item ELIF - struktura i primjer
+\end{itemize}
+	
+	\begin{lstlisting}[language=bash]
+		#! /bin/bash
+		pom="cool"
+		if [ pom="cool" ]
+		then
+			echo "Linux je cool"
+		elif [ pom="Cool" ]
+		then 
+			echo "Linux je Cool"
+		else
+		then
+			echo "Netocno"
+		fi
+	\end{lstlisting}
+
+\begin{frame}
+\frametitle{Literatura}
+\begin{itemize}
+	\item[]
+	\item[] \small\url{http://blog.tgrrtt.com/bash-101}
+	\item[] \small\url{http://linuxcommand.org/lc3_wss0110.php}
+	\item[] \small\url{https://www.cyberciti.biz/faq/set-environment-variable-linux/}
+	\item[] \small\url{https://ryanstutorials.net/bash-scripting-tutorial/bash-variables.php}
+	\item[] \small\url{http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html} 
+	\item[] \small\url{http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-5.html}
+\end{itemize}
+\end{frame}
+\end{document}

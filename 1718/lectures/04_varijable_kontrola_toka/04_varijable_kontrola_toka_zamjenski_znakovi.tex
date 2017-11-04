@@ -37,7 +37,7 @@
 
 \title{Osnove korištenja operacijskog sustava Linux}
 \subtitle{05. Varijable i kontrola toka}
-\author[Mateo Stjepanović]{Mateo Stjepanović\\{\small Nositelj: dr. sc. Stjepan Groš}}
+\author[Mateo Stjepanović]{Mateo Stjepanović\\Leonard Volarić Horvat\\{\small Nositelj: dr. sc. Stjepan Groš}}
 \institute[FER]{Sveučilište u Zagrebu \\
 				Fakultet elektrotehnike i računarstva}
 				
@@ -103,7 +103,7 @@
 \end{itemize}
 
 \end{frame}
-\begin{lstlisting}[language=bash,caption={Primjer uporabe lokalne varijable}]
+\begin{lstlisting}[language=bash]
 #!/bin/bash
 HELLO=Hello 
 function hello {
@@ -200,43 +200,42 @@ echo $HELLO
 	\item IF - struktura i primjer
 \end{itemize}
 	\begin{lstlisting}[language=bash]
-		#!/bin/bash
-		HELLO="hello"
-		if [ $HELLO="hello" ]
-		then
-			echo "$HELLO world"
-		fi
+#!/bin/bash
+HELLO="hello"
+if [ $HELLO="hello" ]
+then
+	echo "$HELLO world"
+fi
 	\end{lstlisting}
 \begin{itemize}
 	\item ELSE - struktura i primjer
 \end{itemize}
 	
 	\begin{lstlisting}[language=bash]
-		#! /bin/bash
-		if [ -e datoteka.txt ]
-		then
-			cat datoteka.txt
-		else
-			echo "Datoteka ne postoji!"
-		fi
+#! /bin/bash
+if [ -e datoteka.txt ]
+then
+	cat datoteka.txt
+else
+	echo "Datoteka ne postoji!"
+fi
 	\end{lstlisting}
 \begin{itemize}
 	\item ELIF - struktura i primjer
 \end{itemize}
 	
 	\begin{lstlisting}[language=bash]
-		#! /bin/bash
-		pom="kul"
-		if [ pom="kul" ]
-		then
-			echo "Linux je $pom"
-		elif [ pom="bezveze" ]
-		then 
-			echo "Linux masterrace"
-		else
-		then
-			echo "Linux je OS intelektualne elite"
-		fi
+#! /bin/bash
+pom="kul"
+if [ pom="kul" ]
+then
+	echo "Linux je $pom"
+elif [ pom="bezveze" ]
+then 
+	echo "Linux masterrace"
+else
+	echo "Linux je OS intelektualne elite"
+fi
 	\end{lstlisting}
 
 
@@ -322,7 +321,7 @@ done
 	\begin{lstlisting}[language=bash]
 distros='Ubuntu Arch CentOS Gentoo Quit'
 select distro in $distros; do
-	if [ $distro == 'Quit'] then
+	if [ $distro == 'Quit' ]; then
 		break;
 	fi;
 	echo Tvoja je omiljena distribucija $distro;

@@ -1,0 +1,15 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Kopiranje datoteka}{3}{0}{1}
+\beamer@sectionintoc {2}{Preimenovanje i premje\IeC {\v s}tanje datoteka}{5}{0}{2}
+\beamer@sectionintoc {3}{Brisanje datoteka i direktorija}{7}{0}{3}
+\beamer@sectionintoc {4}{Nazivi datoteka}{9}{0}{4}
+\beamer@sectionintoc {5}{Struktura \texttt {usr} direktorija}{20}{0}{5}
+\beamer@sectionintoc {6}{Pregled zauze\IeC {\'c}a diskovnog prostora}{22}{0}{6}
+\beamer@sectionintoc {7}{Unix datoteke}{23}{0}{7}
+\beamer@sectionintoc {8}{Datoteke ure\IeC {\dj }aja}{29}{0}{8}
+\beamer@sectionintoc {9}{Simboli\IeC {\v c}ke poveznice}{31}{0}{9}
+\beamer@sectionintoc {10}{MAC vremena}{34}{0}{10}
+\beamer@sectionintoc {11}{Pregled sadr\IeC {\v z}aja datoteke}{38}{0}{11}
+\beamer@sectionintoc {12}{Mijenjanje sadr\IeC {\v z}aja datoteka}{41}{0}{12}
+\beamer@sectionintoc {13}{Pregled naredbi}{42}{0}{13}

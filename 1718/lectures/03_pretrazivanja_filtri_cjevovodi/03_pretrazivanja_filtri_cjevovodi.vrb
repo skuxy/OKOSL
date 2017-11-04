@@ -1,0 +1,20 @@
+\frametitle{Here document (2)}
+\begin{itemize}
+	\item Preusmjeravanje u datoteku
+	\item[] \begin{verbatim}
+	cat > file.txt << EOF
+	Here doc
+	EOF
+	\end{verbatim}
+	\item[ili] \begin{verbatim}
+	cat << EOF > file.txt
+	Here doc
+	EOF
+	\end{verbatim}
+\end{itemize}
+\begin{itemize}
+	\item Na sličan način funkcioniraju i \textit{here strings}
+	\item[] \begin{verbatim}
+	cat <<< 'Text string'
+	\end{verbatim}
+\end{itemize}

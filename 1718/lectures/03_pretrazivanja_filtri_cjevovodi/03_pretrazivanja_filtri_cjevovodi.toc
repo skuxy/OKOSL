@@ -1,0 +1,13 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Pojam standardnog izlaza i ulaza}{3}{0}{1}
+\beamer@sectionintoc {2}{Filtri}{5}{0}{2}
+\beamer@sectionintoc {3}{Preusmjeravanje}{6}{0}{3}
+\beamer@sectionintoc {4}{\IeC {\v C}esto kori\IeC {\v s}tene filter naredbe}{24}{0}{4}
+\beamer@subsectionintoc {4}{1}{Brojanje znakova, rije\IeC {\v c}i i linija}{24}{0}{4}
+\beamer@subsectionintoc {4}{2}{Pretra\IeC {\v z}ivanje tekstualnog sadr\IeC {\v z}aja}{27}{0}{4}
+\beamer@subsectionintoc {4}{3}{Sortiranje tekstualnog sadr\IeC {\v z}aja}{30}{0}{4}
+\beamer@subsectionintoc {4}{4}{Uklanjanje duplih linija}{32}{0}{4}
+\beamer@subsectionintoc {4}{5}{Izdvajanje pojedinih polja linije}{34}{0}{4}
+\beamer@sectionintoc {5}{Pretra\IeC {\v z}ivanje datote\IeC {\v c}nog sustava}{37}{0}{5}
+\beamer@sectionintoc {6}{Pregled Naredbi}{45}{0}{6}

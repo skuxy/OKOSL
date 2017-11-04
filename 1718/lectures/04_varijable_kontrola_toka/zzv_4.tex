@@ -1,0 +1,137 @@
+\documentclass[table,usenames,dvipsnames]{beamer}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{datetime}
+\usepackage{graphics}
+\usepackage{fancybox}
+\usepackage{color}
+\usepackage[normalem]{ulem}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{varwidth}
+\usetikzlibrary{shapes,arrows}
+\usetheme{CambridgeUS}
+\usecolortheme{seagull}
+% Changing of bullet foreground color not possible if {itemize item}[ball]
+\DefineNamedColor{named}{Purple}{cmyk}{0.52,0.97,0,0.55}
+\setbeamertemplate{itemize item}[triangle]
+\setbeamercolor{title}{fg=Purple}
+\setbeamercolor{frametitle}{fg=Purple}
+\setbeamercolor{itemize item}{fg=Purple}
+\setbeamercolor{section number projected}{bg=Purple,fg=white}
+\setbeamercolor{subsection number projected}{bg=Purple}
+
+\renewcommand{\dateseparator}{.}
+\newcommand{\todayiso}{\twodigit\day \dateseparator \twodigit\month \dateseparator \the\year}
+\newcommand{\shell}[1]{\texttt{#1}}
+\newcommand{\MyCBox}[1]{%
+  \fcolorbox{black}{gray!30}{\begin{varwidth}{\dimexpr\linewidth-2\fboxsep}#1
+\end{varwidth}}}
+\definecolor{LightGray}{gray}{0.9}
+
+\title{Osnove korištenja operacijskog sustava Linux}
+\subtitle{08. Zamjenski znakovi i regularni izrazi} 
+\author[Dino Lukman i Goran Cetušić]{Dino Lukman i Goran Cetušić\\{\small Nositelj: dr. sc. Stjepan Groš}}
+\institute[FER]{Sveučilište u Zagrebu \\
+				Fakultet elektrotehnike i računarstva}
+				
+\date{\todayiso}
+
+\begin{document}
+    %\beamerdefaultoverlayspecification{<+->}
+{
+\setbeamertemplate{headline}[] % still there but empty
+\setbeamertemplate{footline}{}
+
+\begin{frame}
+\maketitle
+\end{frame}
+}
+
+
+\begin{frame}[t]
+\frametitle{Zadaci (1)}
+\begin{itemize}
+  \item U varijablu \shell{micek} spremite tekst "sladak"
+  \item Koristeći Bash kontrolu toka, provjerite \textit{je li micek sladak} i ispišite adekvatnu poruku
+  \item Promijenite sadržaj varijable \shell{micek} u "spretan" i, koristeći istu \shell{if} konstrukciju, provjerite je li micek još uvijek sladak.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Zadaci (2)}
+  \begin{itemize}
+    \item Koristeći \shell{for} petlju, generirajte datoteke s imenima od 0 do 5 (uključivo)
+    \item Koristeći \shell{for} petlju koja iterira po datotekama, preimenujte sve datoteke s "neparnim" imenom tako da se zovu "odd\_file\_broj--koji--je--bio"
+    \begin{itemize}
+      \item Koji se ovdje problem može pojaviti?
+    \end{itemize}
+    \item Ispišite sadržaj direktorija
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[t]
+\frametitle{Zadaci (3)}
+\begin{itemize}
+  \item Ispisati datoteke u /bin koje u nazivu sadrže samo dva slova
+  \item Ispisati datoteke u /bin čiji naziv započinje sa 'z' i završava s 'p'
+  \item Ispisati datoteke u /bin čiji naziv započinje sa 'ta' i ima tri slova
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[t]
+\frametitle{Rješenja (1)}
+\begin{itemize}
+  \item micek=sladak
+  \item if [ \$micek = "sladak" ] \\
+          then echo "Micek je sladak!" \\
+          else echo "Micek nije sladak :(" \\
+        fi
+  \item micek="spretan"
+  \item if [ \$micek = "sladak" ] \\
+          then echo "Micek je sladak!" \\
+          else echo "Micek nije sladak :(" \\
+        fi
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[t]
+\frametitle{Rješenja (2)}
+\begin{itemize}
+  \item for i in {0..5} \\
+        do \\
+          touch \$i \\
+        done
+  \item for f in * \\
+        do \\
+          if [ \$((\$f\%2)) -ne 0 ]
+          then
+            mv \$f "odd\_file\_\$f"
+          fi
+        done
+  \item ls
+  \vfill
+  \item Dolazi do problema ako se u direktoriju nalazi neka datoteka čije ime sadrži nešto osim znamenki, jer modulo-aritmetika nije definirana nad nenumeričkim vrijednostima. Ovom bi se problemu trebalo doskočiti, primjerice, uvođenjem dodatne provjere je li vrijednost doista broj. Jedan od načina da se to ostvari jest uspoređivanje varijable sa sâmom sobom, ali koristeći operator \shell{-eq}.
+  
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[t]
+\frametitle{Rješenja (3)}
+\begin{itemize}
+	\item \shell{ls /bin/??}
+	\item \shell{ls /bin/z*p}
+	\item \shell{ls /bin/ta?}
+\end{itemize}
+\end{frame}
+
+
+
+\end{document}
